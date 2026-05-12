@@ -1,0 +1,21 @@
+.menu_footer {
+  border-top: 1px solid var(--black);
+  padding: 1rem;
+
+
+ .menu {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu a {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+ .menu a:hover {
+  color: var(--red);
+}
+}
