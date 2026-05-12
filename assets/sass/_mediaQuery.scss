@@ -1,0 +1,42 @@
+/*============================
+Page single
+==============================*/
+@media screen and (max-width: 768px) {
+  .single-photo-page {
+    .photo-info,
+    .photo-contact,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .photo-meta {
+      order: 2;
+    }
+
+    .photo-image {
+      order: 1;
+
+      > img {
+        height: 500px;
+      }
+    }
+
+    .photo-navigation {
+      position: static;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .nav-thumbnail {
+      display: none;
+    }
+
+    .nav-arrows {
+      justify-content: space-between;
+    }
+
+    .related-grid img {
+      height: 350px;
+    }
+  }
+}

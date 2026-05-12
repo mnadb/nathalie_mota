@@ -34,6 +34,15 @@ function nathalie_mota_enqueue_assets() {
         '1.0',
         true
     );
+    //single-photo
+    wp_enqueue_script(
+        'single-photo',
+        get_template_directory_uri() . '/assets/js/single-photo.js',
+        array(),
+        '1.0',
+        true
+    );
 }
-
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_assets');
+
+

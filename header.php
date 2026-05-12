@@ -9,8 +9,7 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
+
 
 <header class="site-header">
     <nav class="main-navigation">
@@ -21,19 +20,6 @@
                 alt="Logo Nathalie Mota"
             >
         </a>
-
-        <button
-            class="burger"
-            type="button"
-            aria-label="Ouvrir le menu"
-            aria-expanded="false"
-            aria-controls="nav-menu"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </button> 
-
         <?php
                     wp_nav_menu(array( // Affiche le menu principal
                         'theme_location' => 'header',
@@ -45,8 +31,4 @@
 
     </nav>
 </header>
-  <main id="primary" class="site-main">
-      <section class="hero">
-        <img src="http://localhost:8080/nathalie_Mota/wp-content/uploads/2026/05/nathalie-11-scaled.jpeg" alt="Soirée dansante" />
-        <h1>PHOTOGRAPHE EVENT</h1>
-      </section>
+ 
