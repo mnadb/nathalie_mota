@@ -3,7 +3,7 @@
 <main id="main" class="single-photo-page">
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
+<!-- Je récupérer les champs personnalisés d'ACF et la photo prev et next -->
 <?php
 $image      = get_field('photo');
 $reference  = get_field('reference');
@@ -14,7 +14,7 @@ $annee      = get_field('annee');
 $prev_post = get_previous_post();
 $next_post = get_next_post();
 ?>
-
+<!-- ajout automatique des classes WP au post -->
 <section <?php post_class('photo-detail'); ?>>
 
     <div class="photo-info">
@@ -40,14 +40,14 @@ $next_post = get_next_post();
                 <li><strong>Année :</strong> <?php echo esc_html($annee ?: '2022'); ?></li>
             </ul>
         </div>
-
+        <!-- Affichage de la grande photo -->
         <div class="photo-image">
             <?php if ( ! empty($image) ) : ?>
                 <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
             <?php endif; ?>
 
             <div class="photo-navigation">
-
+                <!-- affichage de la miniature -->
                 <div class="nav-thumbnail">
                     <?php
                     $thumb_post = $next_post ?: $prev_post;

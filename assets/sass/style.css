@@ -261,4 +261,33 @@ Page single
   .single-photo-page .related-grid img {
     height: 350px;
   }
+}
+/* ==============================
+   HERO
+================================*/
+.hero {
+  position: relative;
+  width: 100%;
+}
+.hero .wp-image-104 {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.hero h1 {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  margin: 0;
+  padding-inline: 1rem;
+  font-family: "Space Mono", monospace;
+  font-size: 4rem;
+  font-style: italic;
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--white);
+  text-transform: uppercase; /*convertit tout le texte en majuscule*/
+  letter-spacing: 2px;
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */
