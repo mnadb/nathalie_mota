@@ -7,22 +7,33 @@
 
 
     <section class="hero">
-		<h1>PHOTOGRAPHE EVENT</h1>
- 
+		<?php the_content(); ?>
   	</section>
+    <form id="filter-form">
+     <section class="filters">
+        <select class="categories_format" name="categories">
+          <option value="">CATÉGORIES</option>
+          <option value="reception">Réception</option>
+          <option value="television">Télévision</option>
+          <option value="concert">Concert</option>
+          <option value="mariage">Mariage</option>
+          <option value="label5">Label5</option>
+        </select>
 
+        <select class="categories_format" name="formats">
+          <option value="">FORMATS</option>
+          <option value="portrait">Portrait</option>
+          <option value="paysage">Paysage</option>
+        </select>
 
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-        <h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1> <?php edit_post_link(); ?>
-
-        <div class="entry-content" itemprop="mainContentOfPage">
-            <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'full', array( 'itemprop' => 'image' ) ); } ?>
-            <?php the_content(); ?>
-            <div class="entry-links"><?php wp_link_pages(); ?></div>
-        </div>
-    </article>
-    <?php if ( comments_open() && !post_password_required() ) { comments_template( '', true ); } ?>
+        <select class="trier" name="sort">
+          <option value="">TRIER PAR</option>
+          <option value="recent">Récent</option>
+          <option value="popular">Populaire</option>
+        </select>
+      </section>
+     </form>
+<div id="results"></div>
     <?php endwhile; endif; ?>
 </main>
 <?php get_footer(); ?>

@@ -6,7 +6,7 @@
   width: 100%;
 
 
-.wp-image-104 {
+.img-hero {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -18,11 +18,10 @@ h1 {
   transform: translate(-50%, -50%);
   width: 100%;
   margin: 0;
-  padding-inline: 1rem;
   font-family: "Space Mono", monospace;
-  font-size: 4rem;
+  font-size: 6rem;
   font-style: italic;
-  font-weight: 800;
+  font-weight: 700;
   color: transparent;
   -webkit-text-stroke: 1px var(--white);
   text-transform: uppercase; /*convertit tout le texte en majuscule*/

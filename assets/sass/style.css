@@ -52,7 +52,7 @@ ul {
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   display: block;
 }
@@ -116,7 +116,7 @@ img {
 Page single
 ==============================*/
 .single-photo-page {
-  width: min(90%, 1200px);
+  width: min(90%, 1360px);
   margin: 0 auto;
   padding-top: 35px;
 }
@@ -124,14 +124,13 @@ Page single
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-  border-bottom: 1px solid var(--black);
-  padding-bottom: 30px;
 }
 .single-photo-page .photo-meta {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding-bottom: 30px;
+  border-bottom: 1px solid var(--black);
 }
 .single-photo-page h1 {
   font-size: clamp(2.5rem, 6vw, 5rem);
@@ -171,7 +170,7 @@ Page single
   height: 70px;
   object-fit: cover;
   display: block;
-  margin-left: auto;
+  margin: 0 0 -15px 11px;
 }
 .single-photo-page .nav-arrows {
   display: flex;
@@ -197,8 +196,9 @@ Page single
   font-size: 0.9rem;
 }
 .single-photo-page .photo-contact button {
-  width: 100%;
+  width: 60%;
   padding: 16px;
+  margin-left: -46%;
   border: 0;
   background: var(--medium-grey);
   cursor: pointer;
@@ -269,7 +269,7 @@ Page single
   position: relative;
   width: 100%;
 }
-.hero .wp-image-104 {
+.hero .img-hero {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -280,11 +280,10 @@ Page single
   transform: translate(-50%, -50%);
   width: 100%;
   margin: 0;
-  padding-inline: 1rem;
   font-family: "Space Mono", monospace;
-  font-size: 4rem;
+  font-size: 6rem;
   font-style: italic;
-  font-weight: 800;
+  font-weight: 700;
   color: transparent;
   -webkit-text-stroke: 1px var(--white);
   text-transform: uppercase; /*convertit tout le texte en majuscule*/
