@@ -1,3 +1,11 @@
+<?php
+/**
+ * Single Post Template
+ * 
+ * @package Nathalie Mota
+ */
+?>
+
 <?php get_header(); ?>
 
 <main id="main" class="single-photo-page">

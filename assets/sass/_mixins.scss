@@ -1,0 +1,5 @@
+@mixin spaceMono($weight: 700,  $style: italic) {
+    font-family: "Space Mono", monospace;
+    font-weight: $weight;
+    font-style: $style;
+} 

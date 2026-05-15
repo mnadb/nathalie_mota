@@ -1,0 +1,51 @@
+/** 
+* Font: SpaceMono
+*/
+
+@font-face {
+.space-mono-regular {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  src: url(wp-content/themes/nathalieMota/assets/fonts/Space_Mono/SpaceMono-Regular.ttf);
+}
+}
+
+@font-face {
+.space-mono-bold {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+  src: url(wp-content/themes/nathalieMota/assets/fonts/Space_Mono/SpaceMono-Bold.ttf);
+}
+}
+
+@font-face {
+.space-mono-regular-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+  src: url(wp-content/themes/nathalieMota/assets/fonts/Space_Mono/SpaceMono-BoldItalic.ttf);
+}
+}
+
+@font-face {
+.space-mono-bold-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
+src: url(wp-content/themes/nathalieMota/assets/fonts/Space_Mono/SpaceMono-BoldItalic.ttf);
+}
+}
+/**
+* Font: Poppins
+*/
+
+@font-face {
+.poppins-light {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  src: url(wp-content/themes/nathalieMota/assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+}

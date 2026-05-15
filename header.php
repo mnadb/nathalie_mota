@@ -1,3 +1,15 @@
+<?php
+/**
+ * Header Template
+ *
+ * @package WordPress
+ * @subpackage Nathalie Mota
+ * @since 1.0
+ */
+?>
+
+
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
