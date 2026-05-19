@@ -13,7 +13,7 @@
     <section class="hero">
         <?php the_content(); ?>
     </section>
-
+ 
     <!-- FILTERS -->
     <section class="filters">
         <form class="form-filters" method="GET">
@@ -127,4 +127,7 @@
     </div>
 </section>
  <button class="cta-choix" type="button">Charger plus</button>
+
+ <div class="lightbox"></div>
+
     <?php get_footer(); ?>

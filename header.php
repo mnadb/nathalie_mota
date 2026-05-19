@@ -29,7 +29,23 @@
 
             <a href="<?php echo esc_url(home_url('/')); ?>" class="logo">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Logo.png" alt="Logo Nathalie Mota">
-            </a>
+            </a> 
+             <!-- Menu Mobile -->
+        <button
+            class="burger"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+            >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+            <div class="page-contact">
+
+
+
             <?php
                     wp_nav_menu(array( // Affiche le menu principal
                         'theme_location' => 'header',
@@ -38,6 +54,6 @@
                         'menu_id'    => 'nav-menu',
                     ));
                 ?>
-
+          
         </nav>
     </header>

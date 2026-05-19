@@ -232,6 +232,110 @@ Page single
   display: block;
 }
 
+/* ==============================
+    FILTRE_MOBILE
+================================*/
+@media (min-width: 768px) {
+  .filters {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .filters select {
+    max-width: 260px;
+  }
+  .filters .trier {
+    margin-left: auto;
+  }
+  .grid-photos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  .card img {
+    height: 500px;
+  }
+}
+/* ==============================
+    MENU_MOBILE
+================================*/
+@media (max-width: 767px) {
+  .main-navigation {
+    height: 72px;
+    padding-inline: 1.5rem;
+  }
+  .burger {
+    display: flex;
+    position: relative;
+    z-index: 1000;
+  }
+  .nav-menu {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--red);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(100%);
+    /*  transition: transform 0.3s ease; */
+    z-index: 999;
+  }
+  .nav-menu.open {
+    transform: translateX(0);
+  }
+  .nav-menu a {
+    color: var(--white);
+    font-size: 2rem;
+  }
+  .burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .burger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  .hero img {
+    height: 250px;
+  }
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+  .filters {
+    margin: 25px auto;
+  }
+  .menu_footer .menu {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+/* ==============================
+ POPUP
+================================*/
+@media screen and (max-width: 768px) {
+  .popup-content {
+    padding: 90px 25px 40px;
+  }
+  .popup-content img {
+    width: 160%;
+  }
+}
+/*============================
+LightBox
+==============================*/
+@media (max-width: 768px) {
+  .card-inner img {
+    height: 300px;
+  }
+  .overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.25);
+  }
+}
 /*============================
 Page single
 ==============================*/
@@ -316,8 +420,10 @@ Page single
   align-items: flex-start;
   gap: 70px;
 }
-.filters .trier {
-  margin-left: 27%;
+.filters {
+  /*.trier {
+    margin-left: 27%;
+  }*/
 }
 
 /* ==============================
@@ -346,4 +452,137 @@ Page single
   border: 0;
   background: var(--medium-grey);
   color: var(--black);
+}
+
+/** 
+* Font: SpaceMono
+*/
+@font-face {
+  .space-mono-regular {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    src: url(wp-content/themes/nathalieMota/assets/fonts/Space_Mono/SpaceMono-Regular.ttf);
+  }
+}
+@font-face {
+  .space-mono-bold {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-style: normal;
+    src: url(wp-content/themes/nathalieMota/assets/fonts/Space_Mono/SpaceMono-Bold.ttf);
+  }
+}
+@font-face {
+  .space-mono-regular-italic {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: italic;
+    src: url(wp-content/themes/nathalieMota/assets/fonts/Space_Mono/SpaceMono-BoldItalic.ttf);
+  }
+}
+@font-face {
+  .space-mono-bold-italic {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-style: italic;
+    src: url(wp-content/themes/nathalieMota/assets/fonts/Space_Mono/SpaceMono-BoldItalic.ttf);
+  }
+}
+/**
+* Font: Poppins
+*/
+@font-face {
+  .poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    src: url(wp-content/themes/nathalieMota/assets/fonts/Poppins/Poppins-Regular.ttf);
+  }
+}
+/* ==============================
+   OVERLAY + EFFET HOVER + LIGHTBOX
+================================*/
+.lightbox {
+  display: none; /* cachée par défaut */
+  position: fixed; /* fixée et qui prend tout l'écran */
+  z-index: 1000; /* Pour être sûr de passer au dessus du reste */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* noire avec transparence */
+  background-size: contain; /* l'image occupe tout l'espace disponible */
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer; /* Le curseur a la même forme que sur un lien */
+}
+
+.btn-contact {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+}
+.popup-overlay.active {
+  display: flex;
+}
+
+.popup-content {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  padding: 20px 40px 40px;
+  animation: popupFadeIn 0.3s ease;
+}
+.popup-content img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 25px;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.popup-form {
+  width: 100%;
+}
+.popup-form input,
+.popup-form textarea,
+.popup-form select {
+  width: 100%;
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }/*# sourceMappingURL=style.css.map */

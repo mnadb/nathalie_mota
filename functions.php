@@ -1,6 +1,6 @@
 <?php
 
-// enregistrer le menu
+// enregistrer le menu //
 function register_my_menu() {
     register_nav_menu( 'header' , 'En tête du menu' );
     register_nav_menu( 'footer' , 'Pied de page' );
@@ -10,7 +10,7 @@ add_action( 'after_setup_theme', 'register_my_menu' );
 
 function nathalie_mota_enqueue_assets() {
 
-    // Style principal du thème WordPress : style.css à la racine
+    // Style principal du thème WordPress : style.css à la racine //
     wp_enqueue_style(
         'nathalie-mota-style',
         get_stylesheet_uri(),
@@ -18,7 +18,7 @@ function nathalie_mota_enqueue_assets() {
         '1.0'
     );
 
-    // Style compilé depuis Sass : sass/style.css
+    // Style compilé depuis Sass : sass/style.css//
     wp_enqueue_style(
         'nathalie-mota-main-style',
         get_template_directory_uri() . '/assets/sass/style.css',
@@ -34,7 +34,7 @@ function nathalie_mota_enqueue_assets() {
         '1.0',
         true
     );
-    //single-photo
+    //single-photo //
     wp_enqueue_script(
         'single-photo',
         get_template_directory_uri() . '/assets/js/single-photo.js',
@@ -42,7 +42,14 @@ function nathalie_mota_enqueue_assets() {
         '1.0',
         true
     );
+    // Ajax //
+     wp_enqueue_script(
+        'contact-popup-js',
+        get_template_directory_uri() . '/assets/js/contact-popup.js',
+        array(),
+        '1.0',
+        true
+    );
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_assets');
-
 
