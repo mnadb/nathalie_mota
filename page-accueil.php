@@ -128,6 +128,6 @@
 </section>
  <button class="cta-choix" type="button">Charger plus</button>
 
- <div class="lightbox"></div>
+ <?php get_template_part('parts/content'); ?>
 
     <?php get_footer(); ?>

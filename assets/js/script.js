@@ -10,4 +10,3 @@ burger.addEventListener('click', () => {
 
 // LIGHTBOX //
 
-
