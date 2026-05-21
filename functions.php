@@ -43,7 +43,7 @@ function nathalie_mota_enqueue_assets() {
         '1.0',
         true
     );
-    // Ajax //
+    // popup //
      wp_enqueue_script(
         'contact-popup-js',
         get_template_directory_uri() . '/assets/js/contact-popup.js',

@@ -358,56 +358,6 @@ Page single
   text-transform: uppercase;
 }
 
-@media (max-width: 767px) {
-  .hero {
-    overflow: hidden;
-  }
-  .hero .img-hero,
-  .hero img {
-    height: 250px;
-    object-fit: cover;
-  }
-  .hero h1 {
-    max-width: calc(100% - 24px);
-    font-size: clamp(1.8rem, 9vw, 2.2rem);
-    line-height: 0.95;
-    letter-spacing: 1px;
-    white-space: nowrap;
-  }
-  .filters {
-    width: calc(100% - 40px);
-    margin: 25px auto;
-  }
-  .filters .form-filters {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .filters select,
-  .filters .trier {
-    width: 100%;
-    justify-self: stretch;
-  }
-  .filters select[name=photo_format] {
-    order: 1;
-  }
-  .filters select[name=photo_categorie] {
-    order: 2;
-  }
-  .filters select[name=photo_order] {
-    order: 3;
-  }
-  .cards-photos {
-    width: calc(100% - 40px);
-  }
-  .cards-photos .grid-photos {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .cta-choix {
-    min-width: 190px;
-    margin: 28px auto;
-  }
-}
 /** 
 * Font: SpaceMono
 */
@@ -472,6 +422,13 @@ Page single
   cursor: pointer; /* Le curseur a la même forme que sur un lien */
 }
 
+/* ==============================
+   POPUP CONTACT
+   Code simple :
+   - .popup-overlay : le fond autour de la popup
+   - .popup-content : le cadre blanc
+   - .popup-form : le formulaire
+================================*/
 .btn-contact {
   cursor: pointer;
   border: none;
@@ -480,70 +437,120 @@ Page single
   text-transform: uppercase;
 }
 
+/* Bloque le scroll de la page quand la popup est ouverte. */
 .has-popup-open {
   overflow: hidden;
 }
 
+/* Fond sombre derrière la popup. */
 .popup-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
   display: none;
-  justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
   padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
 }
 .popup-overlay.active {
   display: flex;
 }
 
+/* Cadre blanc de la popup. */
 .popup-content {
   position: relative;
-  width: 100%;
-  max-width: 600px;
-  max-height: 90vh;
-  overflow-y: auto;
-  background: #ffffff;
-  padding: 20px 40px 40px;
-  animation: popupFadeIn 0.3s ease;
-}
-.popup-content img {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-bottom: 25px;
+  width: 597px;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 40px);
+  overflow: hidden auto;
+  border: 5px solid var(--black);
+  background: var(--white);
+  padding-bottom: 42px;
+  box-sizing: border-box;
 }
 
+/* La maquette n'affiche pas de croix visible. */
 .popup-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  border: none;
-  background: transparent;
-  font-size: 2rem;
-  cursor: pointer;
+  display: none;
 }
 
+/* Image CONTACT du haut : plus large que le cadre pour être coupée. */
+.img-contact {
+  display: block;
+  width: 134%;
+  height: 130px;
+  margin-left: -66px;
+  object-fit: cover;
+  object-position: left top;
+}
+
+/* Formulaire centré dans la popup. */
 .popup-form {
-  width: 100%;
+  width: 350px;
+  max-width: calc(100% - 48px);
+  margin: 54px auto 0;
+  /* WPForms ajoute des marges : on les remet à zéro. */
+}
+.popup-form .wpforms-container,
+.popup-form .wpforms-field {
+  margin: 0;
+  padding: 0;
+}
+.popup-form .wpforms-field {
+  margin-bottom: 30px;
+}
+
+  /* Labels : NOM, E-MAIL, RÉF. PHOTO, MESSAGE. */
+.popup-form label,
+.popup-form .wpforms-field-label {
+  display: block;
+  margin: 0 0 8px;
+  color: var(--dark-blue);
+  font-family: "Space Mono", monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+  /* La maquette n'affiche pas les astérisques rouges. */
+
+.popup-form .wpforms-required-label {
+  display: none;
 }
 .popup-form input,
 .popup-form textarea,
 .popup-form select {
-  width: 100%;
+  width: 100% !important;
+  max-width: none !important;
+  border: 1px solid #b8bbc2;
+  border-radius: 8px;
+  background: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+.popup-form input,
+.popup-form select {
+  height: 54px;
+}
+.popup-form textarea {
+  min-height: 280px;
+  resize: vertical;
+}
+.popup-form button[type=submit],
+.popup-form .wpforms-submit {
+  width: 100% !important;
+  height: 66px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--medium-grey) !important;
+  color: var(--black) !important;
+  font-family: "Space Mono", monospace;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-@keyframes popupFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 .photo {
   position: relative;
   display: block;
@@ -723,7 +730,144 @@ Page single
   filter: brightness(0) invert(1);
 }
 
-@media (max-width: 768px) {
+/* ==============================
+   MEDIA QUERIES
+   Organisation simple :
+   1. Mobile  : de 320px à 767px
+   2. Tablette : de 768px à 1023px
+   3. Desktop : à partir de 1024px
+================================*/
+/* ==============================
+   1. MOBILE
+   Petits écrans : téléphone
+================================*/
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  /* Header + menu burger */
+  .main-navigation {
+    height: 72px;
+    padding-inline: 1.5rem;
+  }
+  .burger {
+    display: flex;
+    position: relative;
+    z-index: 1001;
+  }
+  .nav-menu {
+    position: fixed;
+    top: 72px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    width: 100vw;
+    height: calc(100vh - 72px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background: var(--red);
+    transform: translateX(100%);
+  }
+  .nav-menu.open {
+    transform: translateX(0);
+  }
+  .nav-menu a {
+    color: var(--white);
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  .burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+  .burger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+  }
+  /* Page accueil */
+  .hero {
+    overflow: hidden;
+  }
+  .hero .img-hero,
+  .hero img {
+    height: 250px;
+    object-fit: cover;
+  }
+  .hero h1 {
+    max-width: calc(100% - 24px);
+    font-size: clamp(1.8rem, 9vw, 2.2rem);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .filters {
+    width: calc(100% - 40px);
+    margin: 25px auto;
+  }
+  .filters .form-filters {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .filters select,
+  .filters .trier {
+    width: 100%;
+    justify-self: stretch;
+  }
+  .filters select[name=photo_format] {
+    order: 1;
+  }
+  .filters select[name=photo_categorie] {
+    order: 2;
+  }
+  .filters select[name=photo_order] {
+    order: 3;
+  }
+  .cards-photos {
+    width: calc(100% - 40px);
+  }
+  .cards-photos .grid-photos {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .cta-choix {
+    min-width: 190px;
+    margin: 28px auto;
+  }
+  /* Popup contact */
+  .popup-overlay {
+    padding: 14px;
+  }
+  .popup-content {
+    width: min(92vw, 360px);
+    max-height: 90vh;
+    border-width: 3px;
+    padding-bottom: 28px;
+  }
+  .img-contact {
+    height: 95px;
+    margin-left: -34px;
+  }
+  .popup-form {
+    width: calc(100% - 52px);
+    margin-top: 28px;
+  }
+  .popup-form .wpforms-field {
+    margin-bottom: 18px;
+  }
+  .popup-form input,
+  .popup-form select {
+    height: 42px;
+  }
+  .popup-form textarea {
+    min-height: 150px;
+  }
+  .popup-form button[type=submit],
+  .popup-form .wpforms-submit {
+    height: 48px;
+  }
+  /* Lightbox */
   .lightbox {
     padding: 72px 24px 92px;
   }
@@ -748,126 +892,7 @@ Page single
   .lightbox__nav--next {
     right: 24px;
   }
-}
-/* ==============================
-    MENU_MOBILE
-================================*/
-@media (max-width: 767px) {
-  .main-navigation {
-    height: 72px;
-    padding-inline: 1.5rem;
-  }
-  .burger {
-    display: flex;
-    position: relative;
-    z-index: 1001;
-  }
-  .nav-menu {
-    position: fixed;
-    top: 72px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: calc(100vh - 72px);
-    background: var(--red);
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    transform: translateX(100%);
-    z-index: 999;
-  }
-  .nav-menu.open {
-    transform: translateX(0);
-  }
-  .nav-menu a {
-    color: var(--white);
-    font-size: 2rem;
-    text-transform: uppercase;
-  }
-  .burger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-  }
-  .burger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .burger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
-  }
-  .hero img {
-    height: 250px;
-  }
-  .hero h1 {
-    font-size: 1.75rem;
-  }
-  .filters {
-    margin: 25px auto;
-  }
-  .filters .form-filters {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .filters select,
-  .filters .trier {
-    width: 100%;
-    justify-self: stretch;
-  }
-  .menu_footer {
-    padding: 28px 20px 32px;
-  }
-  .menu_footer .menu {
-    flex-direction: column;
-    gap: 18px;
-  }
-  .menu_footer .menu a {
-    font-size: 0.75rem;
-  }
-}
-/* ==============================
- POPUP
-================================*/
-@media screen and (max-width: 768px) {
-  .popup-content {
-    width: min(86vw, 340px);
-    max-height: 88vh;
-    padding: 20px 28px 28px;
-  }
-  .popup-content img {
-    width: 100%;
-    margin-bottom: 22px;
-  }
-  .popup-close {
-    top: 14px;
-    right: 16px;
-    font-size: 1.8rem;
-  }
-  .popup-form input,
-  .popup-form textarea,
-  .popup-form select {
-    min-height: 42px;
-  }
-  .popup-form textarea {
-    min-height: 150px;
-  }
-}
-/*============================
-LightBox
-==============================*/
-@media (max-width: 768px) {
-  .card-inner img {
-    height: 300px;
-  }
-  .overlay {
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.25);
-  }
-}
-/*============================
-Page single
-==============================*/
-@media screen and (max-width: 768px) {
+  /* Page single photo */
   .single-photo-page {
     width: calc(100% - 40px);
     padding-top: 24px;
@@ -880,6 +905,7 @@ Page single
   }
   .single-photo-page .photo-meta {
     order: 2;
+    padding-bottom: 24px;
   }
   .single-photo-page .photo-image {
     order: 1;
@@ -889,14 +915,9 @@ Page single
     max-height: 560px;
     object-fit: contain;
   }
-  .single-photo-page .photo-navigation {
-    display: none;
-  }
+  .single-photo-page .photo-navigation,
   .single-photo-page .nav-thumbnail {
     display: none;
-  }
-  .single-photo-page .nav-arrows {
-    justify-content: space-between;
   }
   .single-photo-page h1 {
     margin: 32px 0 24px;
@@ -906,9 +927,6 @@ Page single
   .single-photo-page li {
     margin-bottom: 12px;
     font-size: 0.75rem;
-  }
-  .single-photo-page .photo-meta {
-    padding-bottom: 24px;
   }
   .single-photo-page .photo-contact {
     padding: 28px 0;
@@ -936,5 +954,94 @@ Page single
     height: auto;
     max-height: 360px;
     object-fit: cover;
+    padding: 0 0 18px 0;
+  }
+  /* Footer */
+  .menu_footer {
+    padding: 28px 20px 32px;
+  }
+  .menu_footer .menu {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .menu_footer .menu a {
+    font-size: 0.75rem;
+  }
+}
+/* ==============================
+   2. TABLETTE
+   Écrans moyens : tablette
+================================*/
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  /* Header */
+  .main-navigation {
+    padding-inline: 2rem;
+  }
+  /* Accueil */
+  .hero h1 {
+    font-size: 4rem;
+  }
+  .filters {
+    width: calc(100% - 64px);
+  }
+  .filters .form-filters {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .filters .trier {
+    justify-self: stretch;
+  }
+  .filters select,
+  .filters .trier {
+    width: 100%;
+  }
+  .cards-photos {
+    width: calc(100% - 64px);
+  }
+  .cards-photos .grid-photos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  /* Single */
+  .single-photo-page {
+    width: calc(100% - 64px);
+  }
+  .single-photo-page .photo-image > img {
+    height: 560px;
+  }
+  .single-photo-page .photo-contact button {
+    width: 80%;
+    margin-left: -50px;
+  }
+  /* Popup */
+  .popup-content {
+    width: min(80vw, 597px);
+  }
+}
+/* ==============================
+   3. DESKTOP
+   Grands écrans : ordinateur
+================================*/
+@media screen and (min-width: 1024px) {
+  /* Header */
+  .burger {
+    display: none;
+  }
+  .nav-menu {
+    display: flex;
+  }
+  /* Accueil */
+  .filters .form-filters {
+    grid-template-columns: 260px 260px 1fr;
+  }
+  .cards-photos .grid-photos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Single */
+  .single-photo-page .photo-info {
+    grid-template-columns: 1fr 1fr;
+  }
+  .single-photo-page .related-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }/*# sourceMappingURL=style.css.map */

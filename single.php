@@ -11,7 +11,8 @@
 <main id="main" class="single-photo-page">
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-<!-- Je récupérer les champs personnalisés d'ACF et la photo prev et next -->
+
+<!-- On récupère les champs personnalisés ACF de la photo. -->
 <?php
 $image      = get_field('photo');
 $reference  = get_field('reference');
@@ -19,14 +20,17 @@ $format     = get_field('format');
 $type       = get_field('type');
 $annee      = get_field('annee');
 
+// On récupère la photo précédente et la photo suivante.
 $prev_post = get_previous_post();
 $next_post = get_next_post();
 ?>
-<!-- ajout automatique des classes WP au post -->
+
+<!-- Section principale : infos de la photo + image. -->
 <section <?php post_class('photo-detail'); ?>>
 
     <div class="photo-info">
 
+        <!-- Métadonnées de la photo : titre, référence, catégorie, format, type, année. -->
         <div class="photo-meta">
             <h1><?php the_title(); ?></h1>
 
@@ -36,6 +40,7 @@ $next_post = get_next_post();
                 <?php endif; ?>
 
                 <?php
+                // On récupère les catégories liées à cette photo.
                 $categories = get_the_terms(get_the_ID(), 'categorie');
                 if ($categories && !is_wp_error($categories)) :
                     $category_names = wp_list_pluck($categories, 'name');
@@ -48,16 +53,20 @@ $next_post = get_next_post();
                 <li><strong>Année :</strong> <?php echo esc_html($annee ?: '2022'); ?></li>
             </ul>
         </div>
-        <!-- Affichage de la grande photo -->
+
+        <!-- Grande image de la photo. -->
         <div class="photo-image">
             <?php if ( ! empty($image) ) : ?>
                 <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
             <?php endif; ?>
 
+            <!-- Navigation vers la photo précédente ou suivante. -->
             <div class="photo-navigation">
-                <!-- affichage de la miniature -->
+
+                <!-- Miniature affichée au-dessus des flèches. -->
                 <div class="nav-thumbnail">
                     <?php
+                    // On affiche une miniature : d'abord la suivante, sinon la précédente.
                     $thumb_post = $next_post ?: $prev_post;
 
                     if ( $thumb_post ) :
@@ -72,6 +81,7 @@ $next_post = get_next_post();
                     <?php endif; endif; ?>
                 </div>
 
+                <!-- Flèches précédent / suivant. -->
                 <div class="nav-arrows">
                     <?php if ( $prev_post ) :
                         $prev_img = get_field('photo', $prev_post->ID);
@@ -105,6 +115,7 @@ $next_post = get_next_post();
 
 </section>
 
+<!-- Zone contact : le bouton ouvre la popup et envoie la référence de la photo. -->
 <section class="photo-contact">
     <p>Cette photo vous intéresse ?</p>
     <button
@@ -116,18 +127,21 @@ $next_post = get_next_post();
     </button>
 </section>
 
+<!-- Photos similaires affichées sous la fiche photo. -->
 <section class="related">
     <h2>VOUS AIMEREZ AUSSI</h2>
 
     <div class="related-grid">
 
         <?php
+        // Requête pour afficher 2 photos similaires.
         $related_args = array(
             'post_type'      => get_post_type(),
             'posts_per_page' => 2,
             'post__not_in'   => array(get_the_ID()),
         );
 
+        // Si la photo a une catégorie, on cherche des photos de la même catégorie.
         if ( ! empty($categories) && ! is_wp_error($categories) ) {
             $related_args['tax_query'] = array(
                 array(
@@ -138,6 +152,7 @@ $next_post = get_next_post();
             );
         }
 
+        // Boucle des photos similaires.
         $related_query = new WP_Query($related_args);
 
         if ( $related_query->have_posts() ) :
@@ -146,6 +161,7 @@ $next_post = get_next_post();
                 $related_image = get_field('photo');
         ?>
 
+            <!-- Carte d'une photo similaire. -->
             <article class="card">
                 <a href="<?php the_permalink(); ?>">
                     <?php if ( ! empty($related_image) ) : ?>

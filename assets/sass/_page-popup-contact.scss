@@ -1,3 +1,11 @@
+/* ==============================
+   POPUP CONTACT
+   Code simple :
+   - .popup-overlay : le fond autour de la popup
+   - .popup-content : le cadre blanc
+   - .popup-form : le formulaire
+================================*/
+
 .btn-contact {
   cursor: pointer;
   border: none;
@@ -6,71 +14,123 @@
   text-transform: uppercase;
 }
 
+/* Bloque le scroll de la page quand la popup est ouverte. */
 .has-popup-open {
   overflow: hidden;
 }
 
+/* Fond sombre derrière la popup. */
 .popup-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
   display: none;
-  justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
   padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
 
   &.active {
     display: flex;
   }
 }
 
+/* Cadre blanc de la popup. */
 .popup-content {
   position: relative;
-  width: 100%;
-  max-width: 600px;
-  max-height: 90vh;
-  overflow-y: auto;
-  background: #ffffff;
-  padding: 20px 40px 40px;
-  animation: popupFadeIn 0.3s ease;
-
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin-bottom: 25px;
-  }
+  width: 597px;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 40px);
+  overflow: hidden auto;
+  border: 5px solid var(--black);
+  background: var(--white);
+  padding-bottom: 42px;
+  box-sizing: border-box;
 }
 
+/* La maquette n'affiche pas de croix visible. */
 .popup-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  border: none;
-  background: transparent;
-  font-size: 2rem;
-  cursor: pointer;
+  display: none;
 }
 
+/* Image CONTACT du haut : plus large que le cadre pour être coupée. */
+.img-contact {
+  display: block;
+  width: 134%;
+  height: 130px;
+  margin-left: -66px;
+  object-fit: cover;
+  object-position: left top;
+}
+
+/* Formulaire centré dans la popup. */
 .popup-form {
-  width: 100%;
+  width: 350px;
+  max-width: calc(100% - 48px);
+  margin: 54px auto 0;
+
+  /* WPForms ajoute des marges : on les remet à zéro. */
+  .wpforms-container,
+  .wpforms-field {
+    margin: 0;
+    padding: 0;
+  }
+
+  .wpforms-field {
+    margin-bottom: 30px;
+  }
+
+  /* Labels : NOM, E-MAIL, RÉF. PHOTO, MESSAGE. */
+  label,
+  .wpforms-field-label {
+    display: block;
+    margin: 0 0 8px;
+    color: var(--dark-blue);
+    font-family: "Space Mono", monospace;
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  /* La maquette n'affiche pas les astérisques rouges. */
+  .wpforms-required-label {
+    display: none;
+  }
 
   input,
   textarea,
   select {
-    width: 100%;
+    width: 100% !important;
+    max-width: none !important;
+    border: 1px solid #b8bbc2;
+    border-radius: 8px;
+    background: var(--white);
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+
+  input,
+  select {
+    height: 54px;
+  }
+
+  textarea {
+    min-height: 280px;
+    resize: vertical;
+  }
+
+  button[type="submit"],
+  .wpforms-submit {
+    width: 100% !important;
+    height: 66px;
+    border: 0;
+    border-radius: 3px;
+    background: var(--medium-grey) !important;
+    color: var(--black) !important;
+    font-family: "Space Mono", monospace;
+    font-size: 1rem;
+    cursor: pointer;
   }
 }
 
-@keyframes popupFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
