@@ -22,9 +22,9 @@
     font-style: italic;
     font-weight: 700;
     color: transparent;
-    -webkit-text-stroke: 1px var(--white);
+    -webkit-text-stroke: 3px var(--white);
     text-transform: uppercase; /*convertit tout le texte en majuscule*/
-    letter-spacing: 2px;
+    letter-spacing: 6px;
     text-align: center;
   }
 }
@@ -32,11 +32,15 @@
     LES FILTRES
 ================================*/
 .filters {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   width: min(90%, 1200px);
   margin: 40px auto;
+
+  .form-filters {
+    display: grid;
+    grid-template-columns: 260px 260px 1fr;
+    align-items: center;
+    gap: 32px;
+  }
 
   select {
     width: 260px;
@@ -44,18 +48,16 @@
     border-radius: 8px;
     border: 1.3px solid var(--dark-red);
     font-size: 0.875rem;
-  
-    .form-filters {    
-    display: flex;
-    align-items: flex-start;
-    gap: 70px;
-    }
-  
+    background-color: var(--white);
+    text-transform: uppercase;
   }
-  /*.trier {
-    margin-left: 27%;
-  }*/
+
+  .trier {
+    justify-self: end;
+  }
 }
+
+
 /* ==============================
    GRID PHOTOS
 ================================*/
@@ -84,4 +86,76 @@
   background: var(--medium-grey);
   color: var(--black);
 }
+.cta-choix:hover {
+ background: var(--black);
+ color: var(--white);  
+}
 
+.no-photos {
+  grid-column: 1 / -1;
+  margin: 40px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    overflow: hidden;
+
+    .img-hero,
+    img {
+      height: 250px;
+      object-fit: cover;
+    }
+
+    h1 {
+      max-width: calc(100% - 24px);
+      font-size: clamp(1.8rem, 9vw, 2.2rem);
+      line-height: 0.95;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+  }
+
+  .filters {
+    width: calc(100% - 40px);
+    margin: 25px auto;
+
+    .form-filters {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    select,
+    .trier {
+      width: 100%;
+      justify-self: stretch;
+    }
+
+    select[name="photo_format"] {
+      order: 1;
+    }
+
+    select[name="photo_categorie"] {
+      order: 2;
+    }
+
+    select[name="photo_order"] {
+      order: 3;
+    }
+  }
+
+  .cards-photos {
+    width: calc(100% - 40px);
+
+    .grid-photos {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+
+  .cta-choix {
+    min-width: 190px;
+    margin: 28px auto;
+  }
+}

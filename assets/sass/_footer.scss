@@ -2,20 +2,23 @@
   border-top: 1px solid var(--black);
   padding: 1rem;
 
+  .menu {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+  }
 
- .menu {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-  justify-content: center;
-}
+  .menu a {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: font-size 0.3s ease;
+  }
 
-.menu a {
-  font-size: 0.875rem;
-  text-transform: uppercase;
-}
-
- .menu a:hover {
-  color: var(--red);
-}
+  .menu a:hover {
+    color: var(--black);
+    font-size: 1rem;
+    font-weight: 600;
+  }
 }

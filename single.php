@@ -107,7 +107,13 @@ $next_post = get_next_post();
 
 <section class="photo-contact">
     <p>Cette photo vous intéresse ?</p>
-    <button type="button" class="contact-button">Contact</button>
+    <button
+        type="button"
+        class="contact-button js-open-contact-popup"
+        data-reference="<?php echo esc_attr($reference); ?>"
+    >
+        Contact
+    </button>
 </section>
 
 <section class="related">

@@ -6,6 +6,10 @@
   text-transform: uppercase;
 }
 
+.has-popup-open {
+  overflow: hidden;
+}
+
 .popup-overlay {
   position: fixed;
   inset: 0;

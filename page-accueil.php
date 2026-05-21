@@ -16,10 +16,10 @@
  
     <!-- FILTERS -->
     <section class="filters">
-        <form class="form-filters" method="GET">
+        <form class="form-filters" method="GET" action="<?php echo esc_url(get_permalink()); ?>">
 
             <!-- CATEGORIE -->
-            <select class="categories_format" name="categorie" onchange="this.  form.submit()">
+            <select class="categories_format" name="photo_categorie" aria-label="Filtrer par catégorie" onchange="this.form.submit()">
                 <option value="">CATÉGORIES</option>
                 <?php
                     $categories = get_terms([
@@ -28,14 +28,14 @@
                     ]);
 
                     foreach ($categories as $cat) {
-                    $selected = (isset($_GET['categorie']) && $_GET['categorie'] === $cat->slug) ? 'selected' : '';
-                    echo '<option value="' . esc_attr($cat->slug) . '" ' . $selected . '>' . esc_html($cat->name) . '</option>';
+                    $selected_category = isset($_GET['photo_categorie']) ? sanitize_text_field(wp_unslash($_GET['photo_categorie'])) : '';
+                    echo '<option value="' . esc_attr($cat->slug) . '" ' . selected($selected_category, $cat->slug, false) . '>' . esc_html($cat->name) . '</option>';
                     }
                 ?>
             </select>
 
             <!-- FORMAT -->
-            <select class="categories_format" name="format" onchange="this.form.submit()">
+            <select class="categories_format" name="photo_format" aria-label="Filtrer par format" onchange="this.form.submit()">
                 <option value="">FORMATS</option>
                 <?php
                 $formats = get_terms([
@@ -44,17 +44,17 @@
                 ]);
 
                 foreach ($formats as $format) {
-                $selected = (isset($_GET['format']) && $_GET['format'] === $format->slug) ? 'selected' : '';
-                echo '<option value="' . esc_attr($format->slug) . '" ' . $selected . '>' . esc_html($format->name) . '</option>';
+                $selected_format = isset($_GET['photo_format']) ? sanitize_text_field(wp_unslash($_GET['photo_format'])) : '';
+                echo '<option value="' . esc_attr($format->slug) . '" ' . selected($selected_format, $format->slug, false) . '>' . esc_html($format->name) . '</option>';
                 }
                 ?>
             </select>
 
             <!-- TRI -->
-            <select class="trier" name="order" onchange="this.form.submit()">
+            <select class="trier" name="photo_order" aria-label="Trier les photos" onchange="this.form.submit()">
                 <option value="">TRIER PAR</option>
-                <option value="DESC" <?php selected($_GET['order'] ?? '', 'DESC'); ?>>Décroissant</option>
-                <option value="ASC" <?php selected($_GET['order'] ?? '', 'ASC'); ?>>Croissant</option>
+                <option value="DESC" <?php selected(strtoupper(sanitize_text_field(wp_unslash($_GET['photo_order'] ?? ''))), 'DESC'); ?>>Récente</option>
+                <option value="ASC" <?php selected(strtoupper(sanitize_text_field(wp_unslash($_GET['photo_order'] ?? ''))), 'ASC'); ?>>Ancienne</option>
             </select>
 
         </form>
@@ -66,9 +66,9 @@
             
         <!-- Récupérer les valeurs de get. -->
         <?php
-        $categorie = $_GET['categorie'] ?? '';
-        $format    = $_GET['format'] ?? '';
-        $order     = $_GET['order'] ?? 'DESC';
+        $categorie = isset($_GET['photo_categorie']) ? sanitize_text_field(wp_unslash($_GET['photo_categorie'])) : '';
+        $format    = isset($_GET['photo_format']) ? sanitize_text_field(wp_unslash($_GET['photo_format'])) : '';
+        $order     = isset($_GET['photo_order']) ? sanitize_text_field(wp_unslash($_GET['photo_order'])) : 'DESC';
 
         $order = strtoupper($order);
         if (!in_array($order, ['ASC', 'DESC'])) {
@@ -81,14 +81,13 @@
         'posts_per_page' => 8,
         'orderby'        => 'date',
         'order'          => $order,
-        'tax_query'      => [
-            'relation' => 'AND',
-        ],
         ];
+
+        $tax_query = [];
 
 
         if (!empty($categorie)) {
-        $args['tax_query'][] = [
+        $tax_query[] = [
             'taxonomy' => 'categorie',
             'field'    => 'slug',
             'terms'    => $categorie,
@@ -97,11 +96,16 @@
 
 
         if (!empty($format)) {
-        $args['tax_query'][] = [
+        $tax_query[] = [
             'taxonomy' => 'format',
             'field'    => 'slug',
             'terms'    => $format,
         ];
+        }
+
+        if (!empty($tax_query)) {
+        $tax_query['relation'] = 'AND';
+        $args['tax_query'] = $tax_query;
         }
 
         // loop : la boucle wordpress
@@ -111,23 +115,21 @@
 
         while ($query->have_posts()) : $query->the_post();
 
-            // champ ACF "photo"
-            $image = get_field('photo');
-            ?>
-                    <div class="photo">
-                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-                    </div>
+            get_template_part('parts/overlay');
 
-                    <?php
         endwhile;
 
         wp_reset_postdata();
 
+        else :
+            echo '<p class="no-photos">Aucune photo ne correspond à ces filtres.</p>';
         endif; ?>
     </div>
 </section>
  <button class="cta-choix" type="button">Charger plus</button>
 
- <?php get_template_part('parts/content'); ?>
+ <?php get_template_part('parts/lightbox'); ?>
 
-    <?php get_footer(); ?>
+ </main>
+
+<?php get_footer(); ?>

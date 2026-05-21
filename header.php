@@ -44,10 +44,6 @@
             <span></span>
             <span></span>
         </button>
-            <div class="page-contact">
-
-
-
             <?php
                     wp_nav_menu(array( // Affiche le menu principal
                         'theme_location' => 'header',
