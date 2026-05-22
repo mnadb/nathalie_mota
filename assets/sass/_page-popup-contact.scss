@@ -1,9 +1,6 @@
 /* ==============================
    POPUP CONTACT
-   Code simple :
-   - .popup-overlay : le fond autour de la popup
-   - .popup-content : le cadre blanc
-   - .popup-form : le formulaire
+ 
 ================================*/
 
 .btn-contact {
@@ -37,15 +34,17 @@
 
 /* Cadre blanc de la popup. */
 .popup-content {
-  position: relative;
-  width: 597px;
-  max-width: calc(100vw - 40px);
-  max-height: calc(100vh - 40px);
-  overflow: hidden auto;
-  border: 5px solid var(--black);
-  background: var(--white);
-  padding-bottom: 42px;
-  box-sizing: border-box;
+    position: relative;
+    overflow: hidden auto;
+    border: 5px solid var(--black);
+    background: var(--white);
+    box-sizing: border-box;
+
+    width: min(636px, 92vw);
+    max-height: 96vh;
+
+    padding: 1.2rem 1.6rem 1.4rem;
+    border-radius: 12px;
 }
 
 /* La maquette n'affiche pas de croix visible. */
@@ -67,7 +66,7 @@
 .popup-form {
   width: 350px;
   max-width: calc(100% - 48px);
-  margin: 54px auto 0;
+  margin: 0 auto;
 
   /* WPForms ajoute des marges : on les remet à zéro. */
   .wpforms-container,
@@ -77,14 +76,14 @@
   }
 
   .wpforms-field {
-    margin-bottom: 30px;
+    margin-bottom: 16px;
   }
 
   /* Labels : NOM, E-MAIL, RÉF. PHOTO, MESSAGE. */
   label,
   .wpforms-field-label {
     display: block;
-    margin: 0 0 8px;
+    margin: 0 0 6px;
     color: var(--dark-blue);
     font-family: "Space Mono", monospace;
     font-size: 1rem;
@@ -103,7 +102,7 @@
     width: 100% !important;
     max-width: none !important;
     border: 1px solid #b8bbc2;
-    border-radius: 8px;
+    border-radius: 8px!important;
     background: var(--white);
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
@@ -112,18 +111,18 @@
 
   input,
   select {
-    height: 54px;
+    height: 42px;
   }
 
   textarea {
-    min-height: 280px;
+    min-height: 150px;
     resize: vertical;
   }
 
   button[type="submit"],
   .wpforms-submit {
     width: 100% !important;
-    height: 66px;
+    height: 48px;
     border: 0;
     border-radius: 3px;
     background: var(--medium-grey) !important;
@@ -133,4 +132,3 @@
     cursor: pointer;
   }
 }
-

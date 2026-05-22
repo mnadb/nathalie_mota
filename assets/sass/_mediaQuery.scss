@@ -25,7 +25,7 @@
 
   .nav-menu {
     position: fixed;
-    top: 72px;
+    top: 115px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -36,18 +36,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
     background: var(--red);
     transform: translateX(100%);
+    
   }
 
   .nav-menu.open {
     transform: translateX(0);
   }
-
+  .nav-menu ul {
+    margin: 29px 0 !important;
+  }
   .nav-menu a {
     color: var(--white);
-    font-size: 2rem;
+    font-size: 2rem !important;
     text-transform: uppercase;
   }
 
@@ -93,7 +95,8 @@
   }
 
   .filters select,
-  .filters .trier {
+  .filters .trier,
+  .filters .select2-container {
     width: 100%;
     justify-self: stretch;
   }
@@ -318,7 +321,8 @@
   }
 
   .filters select,
-  .filters .trier {
+  .filters .trier,
+  .filters .select2-container {
     width: 100%;
   }
 

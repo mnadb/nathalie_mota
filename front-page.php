@@ -18,8 +18,8 @@
     <section class="filters">
         <form class="form-filters" method="GET" action="<?php echo esc_url(get_permalink()); ?>">
 
-            <!-- Filtre par catégorie. -->
-            <select class="categories_format" name="photo_categorie" aria-label="Filtrer par catégorie" onchange="this.form.submit()">
+            <!-- Filtre par catégorie. la class pour Selects2 -->
+            <select class="categories_format js-photo-filter" name="photo_categorie" aria-label="Filtrer par catégorie" onchange="this.form.submit()">
                 <option value="">CATÉGORIES</option>
                 <?php
                     // On récupère toutes les catégories de la taxonomie "categorie".
@@ -37,7 +37,7 @@
             </select>
 
             <!-- Filtre par format. -->
-            <select class="categories_format" name="photo_format" aria-label="Filtrer par format" onchange="this.form.submit()">
+            <select class="categories_format js-photo-filter" name="photo_format" aria-label="Filtrer par format" onchange="this.form.submit()">
                 <option value="">FORMATS</option>
                 <?php
                 // On récupère tous les formats de la taxonomie "format".
@@ -55,7 +55,7 @@
             </select>
 
             <!-- Tri par date : récent ou ancien. -->
-            <select class="trier" name="photo_order" aria-label="Trier les photos" onchange="this.form.submit()">
+            <select class="trier js-photo-filter" name="photo_order" aria-label="Trier les photos" onchange="this.form.submit()">
                 <option value="">TRIER PAR</option>
                 <option value="DESC" <?php selected(strtoupper(sanitize_text_field(wp_unslash($_GET['photo_order'] ?? ''))), 'DESC'); ?>>Récente</option>
                 <option value="ASC" <?php selected(strtoupper(sanitize_text_field(wp_unslash($_GET['photo_order'] ?? ''))), 'ASC'); ?>>Ancienne</option>
