@@ -56,7 +56,10 @@
     justify-self: end;
   }
 }
-
+.js-photo-filter.is-active {
+  border-color: #e10600;
+  color: #e10600;
+}
 
 /* ==============================
    GRID PHOTOS
