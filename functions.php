@@ -31,7 +31,7 @@ function nathalie_mota_enqueue_assets() {
     wp_enqueue_style(
         'nathalie-mota-main-style',
         get_template_directory_uri() . '/assets/sass/style.css',
-        array('nathalie-mota-style', 'select2-style'),
+        array(),
         filemtime($theme_dir . '/assets/sass/style.css')
     );
 
@@ -44,23 +44,6 @@ function nathalie_mota_enqueue_assets() {
         true
     );
 
-    // Select2 : bibliothèque utilisée pour les filtres de la page d'accueil.
-    wp_enqueue_script(
-        'select2-script',
-        'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
-        array('jquery'),
-        '4.1.0-rc.0',
-        true
-    );
-
-    // Initialisation simple de Select2 sur les filtres.
-    wp_enqueue_script(
-        'filters-select2',
-        get_template_directory_uri() . '/assets/js/filters-select2.js',
-        array('jquery', 'select2-script'),
-        filemtime($theme_dir . '/assets/js/filters-select2.js'),
-        true
-    );
     //single-photo //
     wp_enqueue_script(
         'single-photo',
