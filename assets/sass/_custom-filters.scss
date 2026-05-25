@@ -1,0 +1,132 @@
+/* ==============================
+    LES FILTRES
+================================*/
+.filters {
+  position: relative;
+  z-index: 2;
+  width: min(90%, 1200px);
+  margin: 40px auto;
+
+  .form-filters {
+    display: grid;
+    grid-template-columns: 260px 260px 1fr;
+    align-items: center;
+    gap: 32px;
+  }
+
+  select {
+    width: 260px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1.3px solid var(--black);
+    font-size: 0.875rem;
+    background-color: var(--white);
+    text-transform: uppercase;
+  }
+
+  .trier {
+    justify-self: end;
+  }
+
+  // Select2 remplace le select : cette largeur conserve les trois colonnes du formulaire.
+  .select2-container {
+    width: 260px !important;
+    touch-action: manipulation;
+  }
+
+  // Le champ de tri transforme par Select2 reste aligne a droite sur ordinateur.
+  .photo-filter--order {
+    justify-self: end;
+  }
+
+  /* Champ ferme visible lorsque la liste n'est pas deployee. */
+  .select2-container--default .select2-selection--single {
+    height: 43px;
+    border: 1px solid var(--black);
+    border-radius: 8px;
+    background: var(--white);
+  }
+
+  /* Le contour bleu signale le filtre ouvert comme sur la maquette. */
+  .select2-container--default.select2-container--open .select2-selection--single {
+    border-color: #215aff;
+    border-radius: 8px 8px 0 0;
+  }
+
+  /* Texte du filtre ferme. */
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 43px;
+    padding-left: 16px;
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+
+  /* Aligne la fleche dans le champ de 43px de hauteur. */
+  .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 43px;
+    right: 10px;
+  }
+}
+
+/*
+ * Select2 place la liste ouverte en dehors de .filters.
+ * La classe ajoutee en JavaScript limite donc le style au menu des photos.
+ */
+.photo-filter-dropdown {
+  z-index: 20;
+  border: 1px solid #215aff;
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  background: var(--white);
+
+  /* Dimensions et typographie des lignes de la liste ouverte. */
+  .select2-results__option {
+    padding: 14px 18px;
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+    color: var(--black);
+    background: var(--white);
+  }
+
+  /* Premiere nuance rouge lorsque l'utilisateur survole une option. */
+  .select2-results__option--highlighted.select2-results__option--selectable:not(.select2-results__option--selected),
+  .select2-results__option--selectable:hover:not(.select2-results__option--selected) {
+    background-color: var(--tertiary-red) !important;
+    color: var(--black) !important;
+  }
+
+  /* Deuxieme nuance lors de l'appui, juste avant la selection. */
+  .select2-results__option--selectable:active:not(.select2-results__option--selected) {
+    background-color: var(--light-red) !important;
+    color: var(--white) !important;
+  }
+
+  /* L'option choisie garde le rouge plein de la maquette. */
+  .select2-results__option--selected {
+    background-color: var(--red) !important;
+    color: var(--white) !important;
+  }
+
+  /* Les options non selectionnees restent blanches apres un changement. */
+  .select2-results__option--selectable:not(.select2-results__option--selected) {
+    background-color: var(--white);
+    color: var(--black);
+  }
+}
+
+@media (max-width: 1023px) {
+  .filters {
+    // Les composants Select2 prennent la largeur de leur colonne responsive.
+    .select2-container {
+      width: 100% !important;
+    }
+
+    .photo-filter--order {
+      justify-self: stretch;
+    }
+  }
+}
+

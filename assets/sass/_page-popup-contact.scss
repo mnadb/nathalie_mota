@@ -104,7 +104,8 @@
     border: 1px solid #b8bbc2;
     border-radius: 8px!important;
     background: var(--white);
-    font-family: "Poppins", sans-serif;
+    // Force la police du champ car la feuille de style WPForms est plus specifique.
+    font-family: "Poppins", sans-serif !important;
     font-size: 1rem;
     box-sizing: border-box;
   }

@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Gere l'ouverture et la fermeture du formulaire de contact.
   // On récupère la popup dans le HTML.
   const popup = document.querySelector("#contact-popup");
 

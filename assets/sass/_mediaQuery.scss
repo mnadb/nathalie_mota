@@ -1,389 +1,371 @@
 /* ==============================
-   MEDIA QUERIES
-   Organisation simple :
-   1. Mobile  : de 320px à 767px
-   2. Tablette : de 768px à 1023px
-   3. Desktop : à partir de 1024px
+   TABLETTE
 ================================*/
-
-/* ==============================
-   1. MOBILE
-   Petits écrans : téléphone
-================================*/
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  /* Header + menu burger */
+@media (max-width: 1023px) {
   .main-navigation {
     height: 72px;
-    padding-inline: 1.5rem;
-  }
+    padding-inline: 32px;
 
-  .burger {
-    display: flex;
-    position: relative;
-    z-index: 1001;
-  }
+    .logo img {
+      width: 216px;
+    }
 
-  .nav-menu {
-    position: fixed;
-    top: 115px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 999;
-    display: flex;
-    width: 100vw;
-    height: calc(100vh - 72px);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: var(--red);
-    transform: translateX(100%);
-    
-  }
-
-  .nav-menu.open {
-    transform: translateX(0);
-  }
-  .nav-menu ul {
-    margin: 29px 0 !important;
-  }
-  .nav-menu a {
-    color: var(--white);
-    font-size: 2rem !important;
-    text-transform: uppercase;
-  }
-
-  .burger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-  }
-
-  .burger.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .burger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
-  }
-
-  /* Page accueil */
-  .hero {
-    overflow: hidden;
-  }
-
-  .hero .img-hero,
-  .hero img {
-    height: 250px;
-    object-fit: cover;
+    .nav-menu {
+      gap: 1.25rem;
+    }
   }
 
   .hero h1 {
-    max-width: calc(100% - 24px);
-    font-size: clamp(1.8rem, 9vw, 2.2rem);
-    line-height: 0.95;
-    letter-spacing: 1px;
-    white-space: nowrap;
+    font-size: clamp(2.75rem, 8vw, 4.5rem);
+    -webkit-text-stroke-width: 2px;
+    letter-spacing: 3px;
   }
 
   .filters {
-    width: calc(100% - 40px);
-    margin: 25px auto;
-  }
+    width: calc(100% - 64px);
+    margin-block: 32px;
 
-  .filters .form-filters {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
+    .form-filters {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
 
-  .filters select,
-  .filters .trier,
-  .filters .select2-container {
-    width: 100%;
-    justify-self: stretch;
-  }
+    select {
+      width: 100%;
+    }
 
-  .filters select[name="photo_format"] {
-    order: 1;
-  }
-
-  .filters select[name="photo_categorie"] {
-    order: 2;
-  }
-
-  .filters select[name="photo_order"] {
-    order: 3;
+    .trier,
+    .photo-filter--order {
+      justify-self: stretch;
+    }
   }
 
   .cards-photos {
-    width: calc(100% - 40px);
+    width: calc(100% - 64px);
+
+    .grid-photos {
+      gap: 16px;
+    }
+
+    img {
+      height: clamp(270px, 44vw, 420px);
+    }
   }
 
-  .cards-photos .grid-photos {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .single-photo-page {
+    width: calc(100% - 64px);
+
+    .photo-image > img {
+      height: clamp(470px, 68vw, 620px);
+    }
+
+    .related-grid img {
+      height: clamp(280px, 43vw, 390px);
+    }
+  }
+
+  .lightbox {
+    padding: 64px 64px 50px;
+  }
+}
+
+/* ==============================
+   MOBILE
+================================*/
+@media (max-width: 767px) {
+  .main-navigation {
+    z-index: 30;
+    height: 72px;
+    padding-inline: 24px;
+
+    .logo img {
+      width: 200px;
+    }
+
+    .burger {
+      display: flex;
+      width: 24px;
+      height: 18px;
+    }
+
+    .burger.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .burger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .burger.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu {
+      position: fixed;
+      z-index: 20;
+      top: 115px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      min-height: calc(100dvh - 72px);
+      padding: 24px;
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .nav-menu.open {
+      display: flex;
+    }
+
+    .nav-menu a {
+      display: block;
+      padding: 8px 0;
+      text-align: center;
+    }
+  }
+
+  .hero {
+    .img-hero,
+    img {
+      height: clamp(180px, 65vw, 280px);
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: clamp(1.35rem, 7vw, 2.25rem);
+      -webkit-text-stroke-width: 1px;
+      letter-spacing: 1px;
+    }
+  }
+
+  .filters {
+    width: calc(100% - 64px);
+    margin: 24px auto 14px;
+
+    .form-filters {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    select,
+    .select2-container {
+      width: 100% !important;
+    }
+
+    select[name="photo_format"],
+    .photo-filter--format {
+      order: 1;
+    }
+
+    select[name="photo_categorie"],
+    .photo-filter--categorie {
+      order: 2;
+    }
+
+    select[name="photo_order"],
+    .photo-filter--order {
+      order: 3;
+    }
+  }
+
+  .cards-photos {
+    width: calc(100% - 32px);
+
+    .grid-photos {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    img {
+      height: auto;
+      max-height: none;
+      aspect-ratio: 1.13 / 1;
+      object-fit: cover;
+    }
+  }
+
+  .photo > img {
+    height: auto;
+    aspect-ratio: 1.13 / 1;
   }
 
   .cta-choix {
-    min-width: 190px;
-    margin: 28px auto;
+    min-width: min(250px, calc(100% - 64px));
+    margin-block: 28px;
   }
 
-  /* Popup contact */
+  .single-photo-page {
+    width: calc(100% - 64px);
+    padding-top: 12px;
+
+    .photo-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .photo-image {
+      order: -1;
+
+      > img {
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+      }
+
+      
+    }
+
+    .photo-navigation {
+      display: none;
+    }
+
+    .photo-meta {
+      padding-bottom: 26px;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2rem, 11vw, 2.75rem);
+    }
+
+    li {
+      margin-bottom: 10px;
+      font-size: 0.75rem;
+    }
+
+    .photo-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px 0 14px;
+      text-align: center;
+
+      p {
+        font-size: 0.75rem;
+      }
+
+      button {
+        width: 100%;
+        margin-left: 0;
+        padding: 13px;
+      }
+    }
+
+    .related {
+      padding: 18px 0 20px;
+
+      h2 {
+        margin: 0 0 20px;
+        font-size: 0.85rem;
+        text-align: center;
+      }
+    }
+
+    .related-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+
+      img {
+        height: auto;
+        aspect-ratio: 1.13 / 1;
+      }
+    }
+  }
+
+  .menu_footer {
+    padding: 22px 16px;
+
+    .menu {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .menu a {
+      font-size: 0.8rem;
+    }
+  }
+
   .popup-overlay {
-    padding: 14px;
+    padding: 16px;
   }
 
   .popup-content {
-    width: min(92vw, 360px);
-    max-height: 90vh;
+    width: min(286px, calc(100vw - 32px));
+    max-height: calc(100vh - 32px);
+    padding: 0.5rem 0.8rem 0.75rem;
     border-width: 3px;
-    padding-bottom: 28px;
+    border-radius: 0;
   }
 
   .img-contact {
-    height: 95px;
-    margin-left: -34px;
+    width: 178%;
+    height: 56px;
+    margin-left: -64px;
   }
 
   .popup-form {
-    width: calc(100% - 52px);
-    margin-top: 28px;
+    width: 100%;
+    max-width: calc(100% - 16px);
+
+    .wpforms-field {
+      margin-bottom: 10px !important;
+      padding: 0 !important;
+    }
+
+    label,
+    .wpforms-field-label {
+      margin-bottom: 4px !important;
+      font-size: 0.65rem !important;
+    }
+
+    input,
+    select {
+      height: 34px !important;
+    }
+
+    textarea {
+      height: 92px !important;
+      min-height: 92px !important;
+      padding: 8px !important;
+    }
+
+    button[type="submit"],
+    .wpforms-submit {
+      height: 38px !important;
+      font-size: 0.7rem !important;
+    }
   }
 
-  .popup-form .wpforms-field {
-    margin-bottom: 18px;
-  }
-
-  .popup-form input,
-  .popup-form select {
-    height: 42px;
-  }
-
-  .popup-form textarea {
-    min-height: 150px;
-  }
-
-  .popup-form button[type="submit"],
-  .popup-form .wpforms-submit {
-    height: 48px;
-  }
-
-  /* Lightbox */
   .lightbox {
-    padding: 72px 24px 92px;
+    padding: 60px 18px 62px;
   }
 
   .lightbox__figure {
     width: 100%;
   }
 
-  .lightbox__image {
-    max-height: calc(100vh - 220px);
-  }
-
-  .lightbox__close {
-    top: 24px;
-    right: 24px;
-  }
-
   .lightbox__nav {
     top: auto;
-    bottom: 32px;
-    transform: none;
+    bottom: 20px;
   }
 
   .lightbox__nav--prev {
-    left: 24px;
+    left: 18px;
   }
 
   .lightbox__nav--next {
-    right: 24px;
+    right: 18px;
   }
 
-  /* Page single photo */
-  .single-photo-page {
-    width: calc(100% - 40px);
-    padding-top: 24px;
-  }
-
-  .single-photo-page .photo-info,
-  .single-photo-page .photo-contact,
-  .single-photo-page .related-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .single-photo-page .photo-meta {
-    order: 2;
-    padding-bottom: 24px;
-  }
-
-  .single-photo-page .photo-image {
-    order: 1;
-  }
-
-  .single-photo-page .photo-image > img {
-    height: auto;
-    max-height: 560px;
-    object-fit: contain;
-  }
-
-  .single-photo-page .photo-navigation,
-  .single-photo-page .nav-thumbnail {
-    display: none;
-  }
-
-  .single-photo-page h1 {
-    margin: 32px 0 24px;
-    font-size: clamp(2.8rem, 13vw, 3.6rem);
-    line-height: 0.9;
-  }
-
-  .single-photo-page li {
-    margin-bottom: 12px;
-    font-size: 0.75rem;
-  }
-
-  .single-photo-page .photo-contact {
-    padding: 28px 0;
-    text-align: center;
-  }
-
-  .single-photo-page .photo-contact p {
-    margin-bottom: 18px;
-    font-size: 0.75rem;
-  }
-
-  .single-photo-page .photo-contact button {
-    width: 100%;
-    max-width: 260px;
-    margin: 0 auto;
-    padding: 14px;
-  }
-
-  .single-photo-page .related {
-    padding: 32px 0 42px;
-  }
-
-  .single-photo-page .related h2 {
-    margin-bottom: 24px;
-    font-size: 0.875rem;
-    text-align: center;
-  }
-
-  .single-photo-page .related-grid img {
-    height: auto;
-    max-height: 360px;
-    object-fit: cover;
-    padding: 0 0 18px 0;
-  }
-
-  /* Footer */
-  .menu_footer {
-    padding: 28px 20px 32px;
-  }
-
-  .menu_footer .menu {
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .menu_footer .menu a {
-    font-size: 0.75rem;
-  }
-}
-
-/* ==============================
-   2. TABLETTE
-   Écrans moyens : tablette
-================================*/
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  /* Header */
-  .main-navigation {
-    padding-inline: 2rem;
-  }
-
-  /* Accueil */
-  .hero h1 {
-    font-size: 4rem;
-  }
-
-  .filters {
-    width: calc(100% - 64px);
-  }
-
-  .filters .form-filters {
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .filters .trier {
-    justify-self: stretch;
-  }
-
-  .filters select,
-  .filters .trier,
-  .filters .select2-container {
-    width: 100%;
-  }
-
-  .cards-photos {
-    width: calc(100% - 64px);
-  }
-
-  .cards-photos .grid-photos {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-
-  /* Single */
-  .single-photo-page {
-    width: calc(100% - 64px);
-  }
-
-  .single-photo-page .photo-image > img {
-    height: 560px;
-  }
-
-  .single-photo-page .photo-contact button {
-    width: 80%;
-    margin-left: 0;
-  }
-
-  /* Popup */
-  .popup-content {
-    width: min(80vw, 597px);
-  }
-}
-
-/* ==============================
-   3. DESKTOP
-   Grands écrans : ordinateur
-================================*/
-@media screen and (min-width: 1024px) {
-  /* Header */
-  .burger {
-    display: none;
-  }
-
-  .nav-menu {
-    display: flex;
-  }
-
-  /* Accueil */
-  .filters .form-filters {
-    grid-template-columns: 260px 260px 1fr;
-  }
-
-  .cards-photos .grid-photos {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Single */
-  .single-photo-page .photo-info {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .single-photo-page .related-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .lightbox__close {
+    top: 14px;
+    right: 18px;
   }
 }

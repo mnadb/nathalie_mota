@@ -1,51 +1,42 @@
-/** 
-* Font: SpaceMono
-*/
-
+/* ==============================
+   POLICES LOCALES
+================================*/
 @font-face {
-.space-mono-regular {
-  font-family: "Space Mono", monospace;
+  font-family: "Space Mono";
+  font-style: normal;
   font-weight: 400;
-  font-style: normal;
-  src: url(wp-content/themes/nathalieMota/assets/fonts/Space_Mono/SpaceMono-Regular.ttf);
-}
+  font-display: swap;
+  src: url("../fonts/Space_Mono/SpaceMono-Regular.ttf") format("truetype");
 }
 
 @font-face {
-.space-mono-bold {
-  font-family: "Space Mono", monospace;
+  font-family: "Space Mono";
+  font-style: normal;
   font-weight: 700;
-  font-style: normal;
-  src: url(wp-content/themes/nathalieMota/assets/fonts/Space_Mono/SpaceMono-Bold.ttf);
-}
+  font-display: swap;
+  src: url("../fonts/Space_Mono/SpaceMono-Bold.ttf") format("truetype");
 }
 
 @font-face {
-.space-mono-regular-italic {
-  font-family: "Space Mono", monospace;
+  font-family: "Space Mono";
+  font-style: italic;
   font-weight: 400;
-  font-style: italic;
-  src: url(wp-content/themes/nathalieMota/assets/fonts/Space_Mono/SpaceMono-BoldItalic.ttf);
-}
+  font-display: swap;
+  src: url("../fonts/Space_Mono/SpaceMono-Italic.ttf") format("truetype");
 }
 
 @font-face {
-.space-mono-bold-italic {
-  font-family: "Space Mono", monospace;
+  font-family: "Space Mono";
+  font-style: italic;
   font-weight: 700;
-  font-style: italic;
-src: url(wp-content/themes/nathalieMota/assets/fonts/Space_Mono/SpaceMono-BoldItalic.ttf);
+  font-display: swap;
+  src: url("../fonts/Space_Mono/SpaceMono-BoldItalic.ttf") format("truetype");
 }
-}
-/**
-* Font: Poppins
-*/
 
 @font-face {
-.poppins-light {
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
+  font-family: "Poppins";
   font-style: normal;
-  src: url(wp-content/themes/nathalieMota/assets/fonts/Poppins/Poppins-Regular.ttf);
-}
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Poppins/Poppins-Regular.ttf") format("truetype");
 }
