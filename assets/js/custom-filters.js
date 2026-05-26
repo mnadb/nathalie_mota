@@ -2,7 +2,7 @@ jQuery(function ($) {
   // Selectionne uniquement les listes de filtres presentes sur la page d'accueil.
   const $photoFilters = $('.js-photo-filter');
 
-  // Evite une erreur JavaScript si le plugin Select2 n'est pas charge.
+  // Evite une erreur JavaScript si  Select2 n'est pas charge.
   if (!$photoFilters.length || typeof $.fn.select2 !== 'function') {
     return;
   }

@@ -26,7 +26,7 @@ function mota_enqueue_filters_assets() {
         '4.1.0'
     );
 
-    // Charge le plugin Select2 apres la bibliotheque jQuery de WordPress.
+    // Charge  Select2 apres la bibliotheque jQuery de WordPress.
     wp_enqueue_script(
         'select2-js',
         'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',

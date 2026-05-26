@@ -444,9 +444,9 @@ Page single
 .popup-form .wpforms-field {
   margin-bottom: 16px;
 }
-
+.popup-form {
   /* Labels : NOM, E-MAIL, RÉF. PHOTO, MESSAGE. */
-
+}
 .popup-form label,
 .popup-form .wpforms-field-label {
   display: block;
@@ -457,9 +457,9 @@ Page single
   font-weight: 400;
   text-transform: uppercase;
 }
-
+.popup-form {
   /* La maquette n'affiche pas les astérisques rouges. */
-
+}
 .popup-form .wpforms-required-label {
   display: none;
 }
@@ -709,25 +709,25 @@ Page single
 .filters .photo-filter--order {
   justify-self: end;
 }
-
+.filters {
   /* Champ ferme visible lorsque la liste n'est pas deployee. */
-
+}
 .filters .select2-container--default .select2-selection--single {
   height: 43px;
   border: 1px solid var(--black);
   border-radius: 8px;
   background: var(--white);
 }
-
+.filters {
   /* Le contour bleu signale le filtre ouvert comme sur la maquette. */
-
+}
 .filters .select2-container--default.select2-container--open .select2-selection--single {
   border-color: #215aff;
   border-radius: 8px 8px 0 0;
 }
-
+.filters {
   /* Texte du filtre ferme. */
-
+}
 .filters .select2-container--default .select2-selection--single .select2-selection__rendered {
   line-height: 43px;
   padding-left: 16px;
@@ -736,9 +736,9 @@ Page single
   text-transform: uppercase;
   color: var(--black);
 }
-
+.filters {
   /* Aligne la fleche dans le champ de 43px de hauteur. */
-
+}
 .filters .select2-container--default .select2-selection--single .select2-selection__arrow {
   height: 43px;
   right: 10px;
@@ -764,31 +764,31 @@ Page single
   color: var(--black);
   background: var(--white);
 }
-
+.photo-filter-dropdown {
   /* Premiere nuance rouge lorsque l'utilisateur survole une option. */
-
+}
 .photo-filter-dropdown .select2-results__option--highlighted.select2-results__option--selectable:not(.select2-results__option--selected),
 .photo-filter-dropdown .select2-results__option--selectable:hover:not(.select2-results__option--selected) {
   background-color: var(--tertiary-red) !important;
   color: var(--black) !important;
 }
-
+.photo-filter-dropdown {
   /* Deuxieme nuance lors de l'appui, juste avant la selection. */
-
+}
 .photo-filter-dropdown .select2-results__option--selectable:active:not(.select2-results__option--selected) {
   background-color: var(--light-red) !important;
   color: var(--white) !important;
 }
-
+.photo-filter-dropdown {
   /* L'option choisie garde le rouge plein de la maquette. */
-
+}
 .photo-filter-dropdown .select2-results__option--selected {
   background-color: var(--red) !important;
   color: var(--white) !important;
 }
-
+.photo-filter-dropdown {
   /* Les options non selectionnees restent blanches apres un changement. */
-
+}
 .photo-filter-dropdown .select2-results__option--selectable:not(.select2-results__option--selected) {
   background-color: var(--white);
   color: var(--black);
