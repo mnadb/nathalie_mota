@@ -52,6 +52,12 @@
     }
   }
 
+  // Reduit l'icone de consultation sur tablette.
+  .photo-overlay__eye img {
+    width: 38px;
+    height: 30px;
+  }
+
   .single-photo-page {
     width: calc(100% - 64px);
 
@@ -127,6 +133,7 @@
       display: block;
       padding: 8px 0;
       text-align: center;
+      font-size: 2rem;
     }
   }
 
