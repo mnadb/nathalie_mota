@@ -46,6 +46,10 @@
     border-radius: 8px;
     background: var(--white);
   }
+  
+  .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: var(--black)!important;
+  }
 
   /* Le contour bleu signale le filtre ouvert comme sur la maquette. */
   .select2-container--default.select2-container--open .select2-selection--single {
