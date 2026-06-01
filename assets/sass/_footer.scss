@@ -7,11 +7,18 @@
     gap: 40px;
     align-items: center;
     justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .menu a,
+  .menu span {
+    font-size: 1rem;
+    text-transform: uppercase;
   }
 
   .menu a {
-    font-size: 1rem;
-    text-transform: uppercase;
     cursor: pointer;
     transition: font-size 0.3s ease;
   }

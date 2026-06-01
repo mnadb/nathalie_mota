@@ -130,10 +130,16 @@ img {
   gap: 40px;
   align-items: center;
   justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.menu_footer .menu a {
+.menu_footer .menu a,
+.menu_footer .menu span {
   font-size: 1rem;
   text-transform: uppercase;
+}
+.menu_footer .menu a {
   cursor: pointer;
   transition: font-size 0.3s ease;
 }
@@ -329,6 +335,13 @@ Page single
   margin: 40px 0;
   text-align: center;
   text-transform: uppercase;
+}
+
+/* ==============================
+  PRIVACY POLICY
+================================*/
+.privacy_policy {
+  margin: 45px;
 }
 
 /* ==============================
