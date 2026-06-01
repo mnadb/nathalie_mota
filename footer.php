@@ -9,7 +9,7 @@ $privacy_url = get_privacy_policy_url();
         <li>
             <a href="<?php echo esc_url(home_url('/mentions-legales/')); ?>">Mentions légales</a>
         </li>
-<!-- vérification l'existance du lien -->
+        <!-- vérification l'existance du lien -->
         <?php if ($privacy_url) : ?>
             <li>
                 <a href="<?php echo esc_url($privacy_url); ?>">Vie privée</a>
